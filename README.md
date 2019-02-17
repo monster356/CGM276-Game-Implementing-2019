@@ -1,2 +1,2 @@
 # CGM276-Game-Implementing-2019
-# SAMON RAKSASAT
+- SAMON RAKSASAT
