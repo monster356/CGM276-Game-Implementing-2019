@@ -4,6 +4,13 @@ console.log("serverStarted");
 
 var playarcount = 0;
 
+
+function getRandomArbitrary(min, max) {
+    var ret0 = Math.random() * (max - min) + min;
+    return Math.round(ret0*100)/100;
+  }
+//console.log(getRandomArbitrary(-5.00, 5.00));
+
 io.on("connection", function (socket) {
 
     console.log("clientConnected");
@@ -17,7 +24,10 @@ io.on("connection", function (socket) {
     }
 
     socket.on("move", function (data) {
-        console.log("move");
+
+        console.log("moving",JSON.stringify(data));
+        
+        //socket.broadcast.emit("move",data)
     })
 
     socket.on("disconnect", function () {

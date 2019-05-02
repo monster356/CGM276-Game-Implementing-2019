@@ -7,10 +7,8 @@ public class Network : MonoBehaviour
 {
     static SocketIOComponent socket;
     public GameObject playerPrefab;
+    float x,z;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
 
@@ -18,12 +16,13 @@ public class Network : MonoBehaviour
         socket.On("open", OnConnected);
 
         socket.On("spawn", OnSpawn);
+
+        socket.On("move", OnMove);
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        
     }
     void OnConnected(SocketIOEvent e)
     {
@@ -34,12 +33,15 @@ public class Network : MonoBehaviour
     }
     void OnSpawn(SocketIOEvent e)
     {
-        // Vector3 position = new Vector3(Random.Range(-5.0f, 5.0f), 1, Random.Range(-5.0f, 5.0f));
+        Vector3 position = new Vector3(0f, 1f, 0f);
         print("spawned");
 
         Instantiate(playerPrefab);
-
         //socket.Emit("move");
 
+    }
+    void OnMove(SocketIOEvent e)
+    {
+        print("player is moving " + e.data);
     }
 }
